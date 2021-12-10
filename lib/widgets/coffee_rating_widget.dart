@@ -1,3 +1,4 @@
+import 'package:coffee_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
@@ -12,7 +13,7 @@ class CoffeeRatingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color(0xFF463d46).withOpacity(0.5),
+      color: AppColors.purpleTaupe.withOpacity(0.5),
       borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(15),
         bottomRight: Radius.circular(15),

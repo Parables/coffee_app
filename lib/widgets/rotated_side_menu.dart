@@ -13,6 +13,7 @@ class RoatatedSideMenu extends StatelessWidget {
       decoration: const BoxDecoration(
           color: AppColors.temptress,
           borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
+      // ignore: todo
       // TODO: Use TabBar for easy swtiching pages
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
