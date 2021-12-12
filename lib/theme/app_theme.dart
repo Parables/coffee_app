@@ -9,4 +9,5 @@ class AppColors {
   static const Color purpleTaupe = Color(0xFF463d46);
   static const Color pearl = Color(0xFFefe3c8);
   static const Color eerieBlackTwo = Color(0xFF22151f);
+  static const Color peach = Color(0xFFc94c4c);
 }
