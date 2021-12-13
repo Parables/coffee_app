@@ -4,11 +4,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 class DetailsPage extends StatelessWidget {
-  DetailsPage(
-      {required this.productName, required this.imgUrl, required this.price});
-  String productName;
-  String price;
-  String imgUrl;
+  const DetailsPage({
+    Key? key,
+    required this.productName,
+    required this.imgUrl,
+    required this.price,
+  }) : super(key: key);
+  final String productName;
+  final String price;
+  final String imgUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -42,12 +46,12 @@ class DetailsPage extends StatelessWidget {
                           },
                           borderRadius: BorderRadius.circular(20),
                           child: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               color: Colors.white.withOpacity(0.3),
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Icon(
+                            child: const Icon(
                               IconlyLight.arrowLeft,
                               color: Colors.white,
                             ),
@@ -57,7 +61,7 @@ class DetailsPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
