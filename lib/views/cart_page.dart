@@ -56,49 +56,54 @@ class CartPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox.square(
                                 dimension: 70,
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
+                                  borderRadius: BorderRadius.circular(10),
                                   child: Image.network(
-                                      "https://cdn.pixabay.com/photo/2016/08/09/13/21/coffee-1580595_960_720.jpg"),
+                                    "https://cdn.pixabay.com/photo/2016/08/09/13/21/coffee-1580595_960_720.jpg",
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: const [
-                                  Text(
-                                    'Cappuccino',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      // fontWeight: FontWeight.w500,
-                                      fontSize: 16,
+                              const SizedBox(width: 15),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      'Cappuccino',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        // fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    'Bursting Blueberry',
-                                    style: TextStyle(
-                                      color: Colors.grey,
-                                      // fontWeight: FontWeight.w500,
-                                      fontSize: 16,
+                                    Text(
+                                      'Bursting Blueberry',
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        // fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(height: 20),
-                                  // Spacer(),
-                                  Text(
-                                    '₹ 249',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16,
+                                    SizedBox(height: 20),
+                                    // Spacer(),
+                                    Text(
+                                      '₹ 249',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                               Material(
                                 color: AppColors.purpleTaupe,
@@ -112,7 +117,7 @@ class CartPage extends StatelessWidget {
                                         color: AppColors.pearl,
                                       ),
                                       child: const Icon(
-                                        Icons.add,
+                                        Icons.remove,
                                         size: 16,
                                       ),
                                     ),
@@ -121,6 +126,7 @@ class CartPage extends StatelessWidget {
                                       "2",
                                       style: TextStyle(
                                         color: Colors.white,
+                                        fontFamily: 'Centaur',
                                         fontSize: 16,
                                       ),
                                     ),
@@ -151,27 +157,64 @@ class CartPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              const Divider(color: Colors.grey),
+              // const Divider(color: Colors.grey),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: CustomPaint(
+                    painter: DrawDottedhorizontalline(drawPaint: Paint())),
+              ),
               const SizedBox(height: 10),
-              Container(
-                padding: const EdgeInsets.all(8),
-                color: AppColors.temptress,
-                child: Row(
-                  children: const [
-                    SizedBox(width: 20),
-                    Text(
-                      "Apply Coupon Code",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Centaur',
-                        fontSize: 18,
+              ClipPath(
+                // clipper: CouponClipper(),
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 40,
+                      color: AppColors.temptress,
+                      child: Row(
+                        children: const [
+                          SizedBox(width: 20),
+                          Text(
+                            "Apply Coupon Code",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'Centaur',
+                              fontSize: 18,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.keyboard_arrow_right,
+                            color: Colors.grey,
+                            size: 16,
+                          ),
+                          SizedBox(width: 20),
+                        ],
                       ),
                     ),
-                    Spacer(),
-                    Icon(
-                      Icons.keyboard_arrow_right,
-                      color: Colors.grey,
-                      size: 16,
+                    Positioned(
+                      top: 12.5,
+                      left: -5,
+                      child: Container(
+                        width: 15,
+                        height: 15,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: AppColors.eerieBlackOne,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      top: 12.5,
+                      right: -5,
+                      child: Container(
+                        width: 15,
+                        height: 15,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: AppColors.eerieBlackOne,
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -263,5 +306,53 @@ class CartPage extends StatelessWidget {
       ),
       bottomNavigationBar: const MyBottomNavBar(activeMenu: 2),
     );
+  }
+}
+
+class CouponClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    Path path = Path();
+    // double yHeight = ((size.height / 6) * 2);
+    // path.lineTo(size.width, 0);
+    // path.lineTo(size.width, yHeight);
+    // path.addArc(
+    //     Rect.fromCircle(
+    //         center: Offset(size.width, yHeight + (yHeight / 2)),
+    //         radius: yHeight),
+    //     0,
+    //     yHeight);
+    // path.lineTo(0, size.height);
+    // path.lineTo(0, 0);
+    // path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper oldClipper) {
+    return false;
+  }
+}
+
+class DrawDottedhorizontalline extends CustomPainter {
+  DrawDottedhorizontalline({required this.drawPaint});
+
+  Paint drawPaint;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    drawPaint.color = Colors.white;
+    for (double i = -300; i < 300; i = i + 15) {
+      // 15 is space between dots
+      if (i % 3 == 0) {
+        canvas.drawLine(Offset(i, 0.0), Offset(i + 10, 0.0), drawPaint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }

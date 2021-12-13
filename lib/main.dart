@@ -1,5 +1,6 @@
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:coffee_app/views/home_page.dart';
+import 'package:coffee_app/views/wish_list_page.dart';
 import 'package:coffee_app/widgets/custom_app_bar.dart';
 import 'package:coffee_app/widgets/main_body_widget.dart';
 import 'package:coffee_app/widgets/my_bottom_nav_bar.dart';
@@ -18,6 +19,7 @@ class MyCoffeeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: HomePage(),
+      // home: WishListPage(),
     );
   }
 }
