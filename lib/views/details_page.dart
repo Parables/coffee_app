@@ -1,21 +1,28 @@
+import 'package:coffee_app/models/app_state.dart';
+import 'package:coffee_app/models/product.dart';
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:provider/provider.dart';
 
-class DetailsPage extends StatelessWidget {
+class DetailsPage extends StatefulWidget {
   const DetailsPage({
     Key? key,
-    required this.productName,
-    required this.imgUrl,
-    required this.price,
+    required this.product,
   }) : super(key: key);
-  final String productName;
-  final String price;
-  final String imgUrl;
+  final Product product;
 
   @override
+  State<DetailsPage> createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage> {
+  int choice = 0;
+  @override
   Widget build(BuildContext context) {
+    AppState appState = Provider.of<AppState>(context, listen: false);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.eerieBlackOne,
@@ -33,7 +40,7 @@ class DetailsPage extends StatelessWidget {
                         width: double.infinity,
                         height: MediaQuery.of(context).size.height / 2,
                         child: Image.network(
-                          imgUrl,
+                          widget.product.imgUrl,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -84,7 +91,7 @@ class DetailsPage extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      productName,
+                      widget.product.name,
                       style: const TextStyle(
                         color: Colors.grey,
                         fontSize: 18,
@@ -151,26 +158,35 @@ class DetailsPage extends StatelessWidget {
                   spacing: 10,
                   runSpacing: 10,
                   children: ['Oat', 'Soy', 'Almond']
+                      .asMap()
+                      .entries
                       .map(
-                        (choice) => Chip(
-                          label: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
-                            child: Text(
-                              "$choice Milk",
-                              style: TextStyle(
-                                color: choice == 'Oat'
-                                    ? AppColors.eerieBlackOne
-                                    : Colors.white,
+                        (entry) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              choice = entry.key;
+                            });
+                          },
+                          child: Chip(
+                            label: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                "${entry.value} Milk",
+                                style: TextStyle(
+                                  color: choice == entry.key
+                                      ? AppColors.eerieBlackOne
+                                      : Colors.white,
+                                ),
                               ),
                             ),
+                            backgroundColor: choice == entry.key
+                                ? AppColors.pearl
+                                : AppColors.eerieBlackOne,
+                            side: const BorderSide(color: AppColors.pearl),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
                           ),
-                          backgroundColor: choice == 'Oat'
-                              ? AppColors.pearl
-                              : AppColors.eerieBlackOne,
-                          side: BorderSide(color: AppColors.pearl),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                       )
                       .toList(),
@@ -190,7 +206,7 @@ class DetailsPage extends StatelessWidget {
                     children: [
                       const TextSpan(text: "Price\n"),
                       TextSpan(
-                        text: "₹ $price",
+                        text: "₹ ${widget.product.price}",
                         style: const TextStyle(
                           height: 1.5,
                           fontSize: 20,
@@ -202,7 +218,9 @@ class DetailsPage extends StatelessWidget {
                 const SizedBox(width: 30),
                 Expanded(
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      appState.addToCart(widget.product);
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(

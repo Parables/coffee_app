@@ -10,11 +10,11 @@ class MainBodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: const [
         // Use a GridView.builder to place the products in a grid
         ProductsGridViewWidget(),
         // position the RoatatedSideMenu to fill the left side of the screen
-        const Positioned(
+        Positioned(
           top: 0,
           left: 0,
           bottom: 0,

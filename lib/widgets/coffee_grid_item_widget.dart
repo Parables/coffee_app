@@ -1,3 +1,4 @@
+import 'package:coffee_app/models/product.dart';
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:coffee_app/views/details_page.dart';
 import 'package:coffee_app/widgets/coffee_price_button_widget.dart';
@@ -7,17 +8,11 @@ import 'package:flutter/material.dart';
 class CoffeeCardGridItemWidget extends StatelessWidget {
   const CoffeeCardGridItemWidget({
     Key? key,
-    required this.productName,
-    required this.price,
-    required this.imageUrl,
-    this.rating,
+    required this.product,
   }) : super(key: key);
 
 // these variables are passed into the widget's constructor
-  final String productName;
-  final String price;
-  final String imageUrl;
-  final String? rating;
+  final Product product;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +22,7 @@ class CoffeeCardGridItemWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => DetailsPage(
-              productName: productName,
-              imgUrl: imageUrl,
-              price: price,
-            ),
+            builder: (context) => DetailsPage(product: product),
           ),
         );
       },
@@ -58,7 +49,7 @@ class CoffeeCardGridItemWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       child: Image.network(
                         // the image is loaded from the image address url
-                        imageUrl,
+                        product.imgUrl,
                         //makes the image cover its parent widget, in this case the SizedBox
                         fit: BoxFit.cover,
                       ),
@@ -67,13 +58,13 @@ class CoffeeCardGridItemWidget extends StatelessWidget {
 
                   // the Rating Widget is placed on top of the image because its the last thing in the Stack
                   // by default, top is 0, left:0 so it is pinned to the topLeft corner.
-                  CoffeeRatingWidget(rating: rating)
+                  CoffeeRatingWidget(rating: product.rating)
                 ],
               ),
 
               // the name of the coffee
               Text(
-                productName,
+                product.name,
                 style: const TextStyle(
                   color: Colors.white,
                   fontFamily: 'Centaur',
@@ -82,7 +73,7 @@ class CoffeeCardGridItemWidget extends StatelessWidget {
               ),
 
               // the price of the coffee with the plus icon
-              CoffeePriceButtonWidget(price: price)
+              CoffeePriceButtonWidget(product: product)
             ],
           ),
         ),

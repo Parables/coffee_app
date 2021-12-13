@@ -8,7 +8,7 @@ class CoffeeRatingWidget extends StatelessWidget {
     required this.rating,
   }) : super(key: key);
 
-  final String? rating;
+  final double? rating;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CoffeeRatingWidget extends StatelessWidget {
             ),
             const SizedBox(width: 5),
             Text(
-              rating ?? '4.5',
+              rating == null ? '4.5' : '$rating',
               style: const TextStyle(
                 fontSize: 14,
                 color: Colors.white,
