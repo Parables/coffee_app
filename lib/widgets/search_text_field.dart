@@ -1,8 +1,8 @@
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class SearchTextField extends StatelessWidget {
-  const SearchTextField({
+class SearchTextFieldWidget extends StatelessWidget {
+  const SearchTextFieldWidget({
     Key? key,
   }) : super(key: key);
 

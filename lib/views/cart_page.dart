@@ -1,13 +1,11 @@
 import 'package:coffee_app/models/app_state.dart';
 import 'package:coffee_app/models/cart_item.dart';
-import 'package:coffee_app/models/product.dart';
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:coffee_app/widgets/cart_list_item.dart';
 import 'package:coffee_app/widgets/checkout_details.dart';
 import 'package:coffee_app/widgets/my_bottom_nav_bar.dart';
 import 'package:coffee_app/widgets/pay_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -60,22 +58,22 @@ class CartPage extends StatelessWidget {
                           itemCount: cart.length,
                           itemBuilder: (BuildContext context, int index) {
                             CartItem cartItem = cart[index];
-                            return CartListItem(cartItem: cartItem);
+                            return CartListItemWidget(cartItem: cartItem);
                           },
                           separatorBuilder: (BuildContext context, int index) {
                             return const SizedBox(height: 15);
                           },
                         ),
                       ),
-                      const CheckoutDetails(),
-                      const PayButton(),
+                      const CheckoutDetailsWidget(),
+                      const PayButtonWidget(),
                       const SizedBox(height: 10),
                     ],
                   ),
           ),
         ),
       ),
-      bottomNavigationBar: const MyBottomNavBar(activeMenu: 2),
+      bottomNavigationBar: const MyBottomNavBarWidget(activeMenu: 2),
     );
   }
 }

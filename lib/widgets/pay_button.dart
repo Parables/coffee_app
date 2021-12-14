@@ -1,8 +1,8 @@
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class PayButton extends StatelessWidget {
-  const PayButton({
+class PayButtonWidget extends StatelessWidget {
+  const PayButtonWidget({
     Key? key,
   }) : super(key: key);
 

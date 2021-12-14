@@ -13,12 +13,12 @@ class MainBodyWidget extends StatelessWidget {
       children: const [
         // Use a GridView.builder to place the products in a grid
         ProductsGridViewWidget(),
-        // position the RoatatedSideMenu to fill the left side of the screen
+        // position the RotatedSideMenu to fill the left side of the screen
         Positioned(
           top: 0,
           left: 0,
           bottom: 0,
-          child: RoatatedSideMenu(),
+          child: RotatedSideMenuWidget(),
         ),
       ],
     );

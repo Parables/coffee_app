@@ -19,7 +19,7 @@ class DejaBrewStoreNameWidget extends StatelessWidget {
             color: Colors.grey, // fontStyle: FontStyle.italic,
           ),
         ),
-        // Controller the postion with padding instead of the Positioned widget
+        // controll the postion with padding instead of the Positioned widget
         Padding(
           // these padding values *may not be suitable for every device...
           // adjust accordingly if neccessary

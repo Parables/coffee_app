@@ -2,8 +2,8 @@ import 'package:coffee_app/widgets/deja_brew_store_name_widget.dart';
 import 'package:coffee_app/widgets/user_memoji_widget.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
+class MyAppBarWidget extends StatelessWidget {
+  const MyAppBarWidget({
     Key? key,
   }) : super(key: key);
 

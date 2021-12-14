@@ -14,21 +14,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.eerieBlackOne,
-      // SafeArea prevents our UI from entering into the corners and notch area of the screen or front camera/speaker
+      // wrap the body of the Scaffold with SafeArea
+      // to prevents our UI from entering
+      // into the corners and notch area of the screen
       body: SafeArea(
         // the whole body is place in a Column
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: const [
-            CustomAppBar(),
-            SearchTextField(),
+            MyAppBarWidget(),
+            SearchTextFieldWidget(),
             Expanded(
               child: MainBodyWidget(),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: const MyBottomNavBar(activeMenu: 1),
+      bottomNavigationBar: const MyBottomNavBarWidget(activeMenu: 1),
     );
   }
 }

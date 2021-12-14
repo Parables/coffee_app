@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:provider/provider.dart';
 
-class CartListItem extends StatelessWidget {
-  const CartListItem({
+class CartListItemWidget extends StatelessWidget {
+  const CartListItemWidget({
     Key? key,
     required this.cartItem,
   }) : super(key: key);

@@ -1,8 +1,8 @@
 import 'package:coffee_app/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class RoatatedSideMenu extends StatelessWidget {
-  const RoatatedSideMenu({
+class RotatedSideMenuWidget extends StatelessWidget {
+  const RotatedSideMenuWidget({
     Key? key,
   }) : super(key: key);
 
@@ -13,8 +13,8 @@ class RoatatedSideMenu extends StatelessWidget {
       decoration: const BoxDecoration(
           color: AppColors.temptress,
           borderRadius: BorderRadius.only(topRight: Radius.circular(40))),
-      // ignore: todo
       // TODO: Use TabBar for easy swtiching pages
+      // Or Convert to a StatefulWidget and set the activeCategory
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
         // map through the list to generate the children for the ListView

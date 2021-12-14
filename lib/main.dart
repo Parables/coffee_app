@@ -16,7 +16,6 @@ class MyCoffeeApp extends StatelessWidget {
       create: (context) => AppState(),
       child: const MaterialApp(
         home: HomePage(),
-        // home: WishListPage(),
       ),
     );
   }

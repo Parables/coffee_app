@@ -233,9 +233,11 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                        primary: AppColors.pearl,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8))),
+                      primary: AppColors.pearl,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                   ),
                 ),
               ],

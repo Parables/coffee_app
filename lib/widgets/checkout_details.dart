@@ -3,8 +3,8 @@ import 'package:coffee_app/widgets/apply_coupon.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CheckoutDetails extends StatelessWidget {
-  const CheckoutDetails({
+class CheckoutDetailsWidget extends StatelessWidget {
+  const CheckoutDetailsWidget({
     Key? key,
   }) : super(key: key);
 

@@ -4,8 +4,8 @@ import 'package:coffee_app/views/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
-class MyBottomNavBar extends StatelessWidget {
-  const MyBottomNavBar({
+class MyBottomNavBarWidget extends StatelessWidget {
+  const MyBottomNavBarWidget({
     Key? key,
     required this.activeMenu,
   }) : super(key: key);
